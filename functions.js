@@ -36,6 +36,21 @@ function checkData(inputString) {
  */
 function concatenateArrays(a, b) {
 	// your code goes here
+	if (Array.isArray(a) !== true && Array.isArray(b) !== true) {
+        throw 'Invalid Input';
+    }
+    for (var i = 0; i < a.length; i++) {
+        if (typeof a[i] !== 'number') {
+            throw 'Invalid Input';
+        }
+    }
+    for (var i = 0; i < b.length; i++) {
+        if (typeof b[i] !== 'number') {
+            throw 'Invalid Input';
+        }
+    }
+    var newArray = a.concat(b);
+    return newArray;
 }
 
 /*
