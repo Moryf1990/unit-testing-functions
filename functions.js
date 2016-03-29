@@ -7,7 +7,24 @@
  * If the input is invalid throw an 'Invalid Input' exception.
  */
 function checkData(inputString) {
+	// the type of argument getting passed into the checkData function is a string
+	// a valid input for it would be any string, like 'hello', for example
+
+	// the return value of the function will be either a boolean or a string. If the string being tested
+	//turns out to not be a string then the string 'Invalid input' will be returned. If the thing being tested
+	//is in fact a string and it's length is less equal to three then the boolean true will be returned, if the
+	// string being tested is a string and it's length is not 3 then the boolean false will be returned
 	// your code goes here
+	if(typeof inputString !== 'string'){
+		throw 'Invalid input';
+	}
+
+	if (inputString.length === 3) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
 /*
