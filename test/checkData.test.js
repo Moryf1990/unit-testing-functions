@@ -11,4 +11,7 @@ describe('checkData', function() {
 	it('should return false if the input length is "abcd"', function() {
 		expect(functions.checkData('abcd')).to.be.false;
 	});
+	it('should return Invalid Input if the input is a number', function() {
+		expect(functions.checkData(Number)).to.throw('Invalid Input');
+	});
 });

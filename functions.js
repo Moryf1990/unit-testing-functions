@@ -8,18 +8,23 @@
  */
 function checkData(inputString) {
 	// the type of argument getting passed into the checkData function is a string
-	// a valid input for it would be any string, like 'hello', for example
+	// a valid input for it would be any string, like 'hello', for example, but the string can only
+	// be 3 characters
 
 	// the return value of the function will be either a boolean or a string. If the string being tested
 	//turns out to not be a string then the string 'Invalid input' will be returned. If the thing being tested
 	//is in fact a string and it's length is less equal to three then the boolean true will be returned, if the
 	// string being tested is a string and it's length is not 3 then the boolean false will be returned
 	// your code goes here
-	if(typeof inputString !== 'string'){
+
+	// we are checking that the inputString is actually a string and if it is not we are throwing 'Invalid Input'
+	if (typeof inputString !== 'string'){
 		throw 'Invalid input';
 	}
 
-	if (inputString.length === 3) {
+	// we are asking if the string's length is 3 and if it is we are are returning true
+	// and if not we are returning false
+	else if (inputString.length === 3) {
 		return true;
 	}
 	else {
@@ -35,20 +40,34 @@ function checkData(inputString) {
  * If the input is invalid throw an 'Invalid Input' exception.
  */
 function concatenateArrays(a, b) {
+	// the type of argument getting passed in is an array and it is checking to see if it is a number
+	// an example of a valid input would be [1, 2]
 	// your code goes here
-	if (Array.isArray(a) !== true && Array.isArray(b) !== true) {
+
+	// here we are checking that both a and b are arrays
+	if (Array.isArray(a) !== true || Array.isArray(b) !== true) {
+	// if either a or b is not an array we are throwing 'Invalid Input'
         throw 'Invalid Input';
     }
+
+    // we are iterating through each thing inside array a and making sure that each thing is a number
+    // and if something is not a number we are throwing 'Invalid Input'
     for (var i = 0; i < a.length; i++) {
         if (typeof a[i] !== 'number') {
             throw 'Invalid Input';
         }
     }
+
+    // we are iterating through each thing inside array b and making sure that each thing is a number
+    // and if something is not a number we are throwing 'Invalid Input'
     for (var i = 0; i < b.length; i++) {
         if (typeof b[i] !== 'number') {
             throw 'Invalid Input';
         }
     }
+
+    // we are setting a variable that is equal to arrays a and b concatenated together and we
+    // are returning that variable 
     var newArray = a.concat(b);
     return newArray;
 }
@@ -62,8 +81,18 @@ function concatenateArrays(a, b) {
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
+
+
+ // the input we are looking for is a string and a valid example of that would be any string
 function fixProperNoun(noun) {
 	// your code goes here
+	//the type of input getting passed in is not a string we are throwing 'Invalid Input'
+	if (typeof noun !== 'string') {
+        throw 'Invalid Input';
+    }
+    //this makes the first letter always be uppercase
+    var properNoun = noun.charAt(0).toUpperCase() + noun.slice(1);
+    return properNoun;
 }
 
 /*
@@ -75,6 +104,17 @@ function fixProperNoun(noun) {
  */
 function sortLetters(inputString) {
 	// your code goes here
+	if (typeof inputString !== 'string') {
+		throw 'Invalid Input';
+	}
+	var sorted = '';
+	var temp = [];
+	for (var i = 0; i < inputString.length; i++){
+		temp.push(inputString[i]);
+	}
+	temp = temp.sort();
+	sorted = temp.join('');
+	return sorted;
 }
 
 /*
@@ -86,6 +126,16 @@ function sortLetters(inputString) {
  */
 function absVal(integer) {
 	// your code goes here
+	if (typeof integer !== 'number') {
+		throw 'Invalid Input';
+	}
+	var abs = 0;
+	if (integer > 0) {
+		abs = integer - 0;
+	} else if (integer < 0) {
+		abs = 0 - integer;
+	}
+	return abs;
 }
 
 /*
@@ -95,6 +145,17 @@ function absVal(integer) {
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
+ function myMin(a,b) {
+ 	if (typeof a !== 'number' || typeof b !== 'number' || arguments.length !== 2) {
+ 		throw 'Invalid Input';
+ 	}
+ 	if(a < b) {
+ 		return a;
+ 	} else if (b < a) {
+ 		return b;
+ 	}
+ }
+
 
 /*
  * PROBLEM `myMax`: (normal) - Actual Interview Question
@@ -105,6 +166,17 @@ function absVal(integer) {
  *
  * Insane mode: do this without using a for loop.
  */
+
+
+
+
+
+
+
+
+
+
+
 
 /*
  * PROBLEM `getMonth`: (normal)
@@ -118,11 +190,40 @@ function absVal(integer) {
  * If the input is invalid throw an 'Invalid Input' exception.
  */
 
+function getMonth(integer) {
+    if (typeof integer !== 'number') {
+        throw 'Invalid Input';
+    }
+    if (integer > 12 || integer < 1) {
+        throw 'Invalid Input: number can not be higher than 12 or less than 1';
+    }
+    var month = integer;
+    var months = {
+        1: 'January',
+        2: 'February',
+        3: 'March',
+        4: 'April',
+        5: 'May',
+        6: 'June',
+        7: 'July',
+        8: 'August',
+        9: 'September',
+        10: 'October',
+        11: 'November',
+        12: 'December'
+    }
+    return months[month];
+}
+
 /*
  * PROBLEM `randomElement`: (normal)
  * Create a function called `randomElement` that takes an array of values and
  * returns one randomly selected value from that array.
  */
+function randomElement(arrayOfValues){ 
+    var newArray = (arrayOfValues[Math.floor(Math.random() * (arrayOfValues.length - 0) - 0)])
+    return newArray
+}
 
 /*
  * PROBLEM `studentPairs`: (normal)
