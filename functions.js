@@ -144,17 +144,30 @@ function absVal(integer) {
  * smaller of the two numbers.
  *
  * If the input is invalid throw an 'Invalid Input' exception.
- */
- function myMin(a,b) {
- 	if (typeof a !== 'number' || typeof b !== 'number' || arguments.length !== 2) {
- 		throw 'Invalid Input';
- 	}
- 	if(a < b) {
- 		return a;
- 	} else if (b < a) {
- 		return b;
- 	}
- }
+ // */
+ // function myMin(a, b) {
+ // 	if (typeof a !== 'number' || typeof b !== 'number' || arguments.length !== 2) {
+ // 		throw 'Invalid Input';
+ // 	}
+ // 	if(a < b) {
+ // 		return a;
+ // 	} else if (b < a) {
+ // 		return b;
+ // 	}
+ // }
+
+function myMin(a, b) {
+	if (typeof a !== 'number' || typeof b !== 'number' || arguments.length !== 2) {
+		throw 'Invalid Input'
+	}
+	if(a < b) {
+		return a;
+	}
+	else {
+		return b;
+	}
+}
+
 
 
 /*

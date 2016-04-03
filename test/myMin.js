@@ -17,7 +17,7 @@ describe('myMin', function() {
 	it('should throw exception if input only one argument', function(){
 		expect(function(){functions.myMin(5)}).to.throw('Invalid Input');
 	})
-	it('should throw exception if input more than 2 arguements', function(){
+	it('should throw exception if input more than 2 arguments', function(){
 		expect(function(){functions.myMin(5, 1, 7)}).to.throw('Invalid Input');
 	})
 	it('should throw exception if input is "5","1"', function(){
