@@ -220,9 +220,13 @@ function getMonth(integer) {
  * Create a function called `randomElement` that takes an array of values and
  * returns one randomly selected value from that array.
  */
-function randomElement(arrayOfValues){ 
-    var newArray = (arrayOfValues[Math.floor(Math.random() * (arrayOfValues.length - 0) - 0)])
-    return newArray
+
+function randomElement(values){
+	if(Array.isArray(values) !== true){
+		throw 'Invalid Input'
+	}
+	var item = values[Math.floor(Math.random()*values.length)];
+	return item;
 }
 
 /*
@@ -232,6 +236,31 @@ function randomElement(arrayOfValues){
  * (array of arrays).
  */
 
+function studentPairs(students){
+	if (!_.isArray(students)) {
+		throw 'Invalid Input';
+	}
+	var pairs = [];
+	var runTime = Math.floor(Math.random() * students.length/2);
+	for (var i = 0; i < runTime.length; i++) {
+		var num1 = getRandomInt(0, students.length -1);
+		var name1 = students.splice(num1, 1);
+
+		var num2 = getRandomInt(0, students.length -1);
+		var name2 = students.splice(num2, 1);
+		pairs.push(name1.concat(name2));
+	}
+
+	if(students.length > 0) {
+		var num = getRandomInt(0, pairs.length - 1);
+		pairs[num].push(student[0]);
+	}
+
+	function getRandomInt(min, max) {
+		return Math.floor(Math.random() * (max - min + 1) - min);
+	}
+}
+
 /*
  * PROBLEM `sumSquares`: (normal)
  * Write a function called `sumSquares` that returns the sum of squares of all
@@ -239,6 +268,17 @@ function randomElement(arrayOfValues){
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
+ function sumSquares (values) {
+	if(isNaN(values) || typeof values !== 'number') {
+		throw new Error('Invalid Input');
+	} else {
+		var totalSum = 0;
+		for (var i = 1; i <= values; i++) {
+			totalSum += (i*i);
+		}
+		return totalSum;
+	}
+}
 
 /* 
  * PROBLEM `findMaxDiff`: (normal)
@@ -248,6 +288,29 @@ function randomElement(arrayOfValues){
  * If the input is invalid throw an 'Invalid Input' exception.
  */
 
+ function findMaxDiff(array) {
+	var maxDiff = Math.abs(array[0]-array[1]);
+	function isInteger(number) {
+		return Math.round(number) === number;
+	}
+	if (Array.isArray(array) === false) {
+		throw new Error('Invalid Input');
+	}
+	for (i = 0; i < array.length; i++) {
+		if (typeof array[i] !== 'number' || !isInteger(array[i])) {
+			throw new Error('Invalid Input');
+		}
+	}
+	for (i = 1; i < array.length; i++) {
+		var diff = Math.abs(array[i]-array[i-1]);
+		if (diff > maxDiff) {
+			maxDiff = diff;
+		}
+	}
+	return maxDiff;
+}
+
+
 /*
  * PROBLEM `insertDashes`: (normal)
  * Write a function called `insertDashes` that transforms a given sentence into
@@ -256,6 +319,19 @@ function randomElement(arrayOfValues){
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
+function insertDashes (words) {
+	if(typeof words !== 'string') {
+		throw new Error('Invalid Input');
+	} else {
+		var individualWords = words.split(' ');
+		for (var i = 0; i < individualWords.length; i++) {
+			var individualWord = individualWords[i].split('');
+			individualWords[i] = individualWord.join('-');
+		}
+		var newSentence = individualWords.join(' ');
+		return newSentence;
+	}
+}
 
 /*
  * PROBLEM `mySubstring`: (normal)
@@ -268,6 +344,17 @@ function randomElement(arrayOfValues){
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
+ function mySubstring(string, a, b) {
+	if (typeof string !== 'string' || typeof a !== 'number' || a < 0 || a > string.length || b < a) {
+		throw new Error('Invalid Input');
+	}
+	var stringList = string.split('');
+	var start = stringList.indexOf(a);
+	var end = stringList.indexOf(b);
+	var substring =stringList.slice(a, (b + 1));
+	return substring.join('');
+}
+
 
 /*
  * PROBLEM `splitSwap`: (hard)
@@ -279,6 +366,27 @@ function randomElement(arrayOfValues){
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
+ function splitSwap (numberList) {
+	if(!Array.isArray(numberList)) {
+		throw new Error('Invalid Input');
+	} else {
+		var halfArrayIndex = Math.floor((numberList.length)/2);
+		var firstHalfArray = numberList.slice(0, halfArrayIndex);
+		var secondHalfArray = numberList.slice(halfArrayIndex);
+		var firstHalfStr = firstHalfArray.join('');
+		var secondHalfStr = secondHalfArray.join('');
+		var numberListStr = '';
+		numberListStr += secondHalfStr + firstHalfStr;
+		var splitArray = [];
+		splitArray = numberListStr.split('');
+		for (var i = 0; i < numberList.length; i++) {
+			if(typeof numberList[i] === 'number') {
+				splitArray[i] = parseInt(splitArray[i]);
+			}
+		}
+		return splitArray;
+	}
+}
 
 /*
  * PROBLEM `smallMultiples`: (hard)
